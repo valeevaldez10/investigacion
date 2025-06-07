@@ -11,9 +11,11 @@ library(mixlm)
 library(fastDummies)
 library(nortest)
 library(lmtest)
+library(caret)
+library(vcd)
 
-edsam<- read_sav("I:\\Vale\\UCB\\I-2025\\minería ii\\proyecto\\código\\datasets\\EDSA2023_Mujer.sav")
-edsav<- read_sav("I:\\Vale\\UCB\\I-2025\\minería ii\\proyecto\\código\\datasets\\EDSA2023_Vivienda.sav")
+edsam<- read_sav("datasets/EDSA2023_Mujer.sav")
+edsav<- read_sav("datasets/EDSA2023_Vivienda.sav")
 datos<- edsam %>% filter(ms01_0101a>=20)
 datos1<-edsav %>% select(folio,qriqueza)
 bd1 <- inner_join(datos,datos1,by="folio")
@@ -67,7 +69,7 @@ mod1=glm(hijos~ms01_0101a+aestudio+
        data=bd, family=binomial(link = "logit"))
 
 summary(mod1)
-#AIC=96.358 - se eliminó ms_05_0521
+#AIC=96.358 
 
 
 ##NOS QUEDAMOS
@@ -77,24 +79,35 @@ mod2=glm(hijos~ms01_0101a+
         data=bd, family=binomial(link = "logit"))
 
 summary(mod2)
-#AIC=93.95 - se eliminó ms05_0521
+#AIC=93.95 
 
 
-#Predicciones modelo 1
-predicciones = ifelse(test = mod1$fitted.values > 0.5, yes = "Si", no = "No")
-matriz = table(mod1$model$hijos, predicciones, dnn = c("observaciones", "predicciones"))
-matriz
+#Matriz de confusión modelo 1
+predicciones1 = ifelse(test = mod1$fitted.values > 0.5, yes = "Si", no = "No")
+observados1 = factor(mod1$model$hijos, levels = c(TRUE, FALSE), labels = c("Si", "No"))
+matriz1 = table(predicciones1,observados1, dnn = c("predicciones", "observaciones"))
+matriz1 <- rbind(matriz1[2, ], matriz1[1, ])
+rownames(matriz1)<-c("Si","No")
+matriz1
+confusionMatrix(matriz1)
 
-#Predicciones modelo 2
+#Matriz de confusión modelo 2
 predicciones2 = ifelse(test = mod2$fitted.values > 0.5, yes = "Si", no = "No")
-matriz2 = table(mod2$model$hijos, predicciones, dnn = c("observaciones", "predicciones"))
+observados2 = factor(mod2$model$hijos, levels = c(TRUE, FALSE), labels = c("Si", "No"))
+matriz2 = table(predicciones,observados, dnn = c("predicciones", "observaciones"))
+matriz2 <- rbind(matriz2[2, ], matriz2[1, ])
+rownames(matriz2)<-c("Si","No")
 matriz2
+confusionMatrix(matriz2)
 
 
-### para graficar un mosaico de la tabla de contingencia del modelo 1
-#install.packages("vcd")
-library(vcd)
-mosaic(matriz, shade = T, colorize = T, gp = gpar(fill = matrix(c("green3", "red2", "red2", "green3"), 2, 2)))
+### Mosaico de la tabla de contingencia - modelo logit
+
+#mod 1
+mosaic(matriz1, shade = T, colorize = T, gp = gpar(fill = matrix(c("green3", "red2", "red2", "green3"), 2, 2)))
+#mod 2
+mosaic(matriz2, shade = T, colorize = T, gp = gpar(fill = matrix(c("green3", "red2", "red2", "green3"), 2, 2)))
+
 
 #analisis de la colinealidad con el factor VIF
 vif(mod1)
@@ -114,8 +127,6 @@ df2 <- mod2$df.null - mod2$df.residual
 p_value <- pchisq(q = dif_residuos,df = df, lower.tail = FALSE)
 p_value
 paste("Diferencia de residuos:", round(dif_residuos, 4))
-# El mismo cálculo se puede obtener directamente con:
-anova(mod1, test = "Chisq")
 
 
 #pseudo R2
