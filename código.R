@@ -59,6 +59,7 @@ summary(m6)
 #Modelo Logit
 #TRUE=Si tiene uno o más hijos
 #FALSE=Si no tiene hijos
+
 bd <- bd %>% mutate(hijos=(ms02_0208>=1))
 bd$hijos
 
