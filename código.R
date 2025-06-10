@@ -66,7 +66,8 @@ summary(m6)
 
 
 #5. Modelo Logit determinantes de la fecundidad
-#Transformación variable hijos (dicotómica en base a ms02_0208)
+
+#Transformación variable dependiente (dicotómica en base a ms02_0208)
 #TRUE=Si tiene uno o más hijos
 #FALSE=Si no tiene hijos
 
