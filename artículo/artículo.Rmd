@@ -1,0 +1,57 @@
+---
+title: Análisis de los determinantes en la fecundidad de las mujeres en Bolivia
+runninghead: Uthor \emph{et al}.
+author:
+- name: Valentina Valdez Vega*
+  num: "1"
+address:
+- num: 1
+  org: Estudiante de la carrera de "Economía e Inteligencia de Negocios", Universidad Católica Boliviana "San Pablo"
+corrauth: "Corresponding author name, This is sample corresponding address."
+email: correspondingauthor@protonmail.com
+abstract: "hola"
+keywords: Fecundidad, Bolivia, Regresión Logit, Regresión de Poisson;
+classoption:
+  - Royal
+  - times
+bibliography: biblio
+bibliographystyle: sageh
+output:
+  rticles::sage_article:
+    keep_tex: yes
+---
+
+# Introducción
+
+
+
+# Objetivos
+
+## Objetivo General
+
+
+
+## Objetivos Específicos
+
+
+
+
+# Motivación
+
+# Marco Teórico/ Revisión de literatura
+
+# Descripción del dataset
+
+
+# Metodología
+
+# Resultados y análisis
+
+# Conclusiones y recomendaciones
+
+
+
+# Bibliography
+
+
+
