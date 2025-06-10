@@ -14,19 +14,24 @@ library(lmtest)
 library(caret)
 library(vcd)
 
+#1. Base datos a utilizar
 edsam<- read_sav("datasets/EDSA2023_Mujer.sav")
 edsav<- read_sav("datasets/EDSA2023_Vivienda.sav")
 datos<- edsam %>% filter(ms01_0101a>=20)
 datos1<-edsav %>% select(folio,qriqueza)
 bd1 <- inner_join(datos,datos1,by="folio")
 
-#seleccionando variables a usar
+
+#2.Seleccionando las variables a usar
 bd <- bd1 %>% select(ms01_0101a,niv_ed,aestudio,
-                     qriqueza,ms01_0108,ms01_0106,ms02_0208,ms02_0238,
+                     qriqueza,ms01_0108,ms01_0106,ms02_0208,
                      ms02_0276,ms05_0521,departamento,region,area,
                      cono_algmet,actmaconcep_cme_m,actuni_m,ms08_0809)
 hist(bd$ms01_0101a)
 
+
+#3. Transformación sobre las variables
+#Transformación de la variable idioma originario (idioma_orig)
 #1,2,4,5,7 -> 1 (idioma originario en la niñez)
 #3,6 -> 0 
 bd <- bd %>% mutate(idioma_orig=ifelse(bd$ms01_0106 %in% c(1,2,4,5,7), 1,
@@ -34,6 +39,7 @@ bd <- bd %>% mutate(idioma_orig=ifelse(bd$ms01_0106 %in% c(1,2,4,5,7), 1,
 bd$idioma_orig<-to_factor(bd$idioma_orig)
 
 
+#Transformación de la variable pertenencia a un grupo indígena (pertenece)
 #1 -> 1 (pertenece a un grupo indígena)
 #2,3 -> 0 
 bd <- bd %>% mutate(pertenece=ifelse(bd$ms01_0108 %in% c(1), 1,
@@ -41,6 +47,9 @@ bd <- bd %>% mutate(pertenece=ifelse(bd$ms01_0108 %in% c(1), 1,
 bd$pertenece<-to_factor(bd$pertenece)
 bd<-bd %>% to_factor()
 str(bd)
+
+
+#4. Modelo Poisson
 
 m6=glm(ms02_0208~ms01_0101a+niv_ed+aestudio+
        qriqueza+pertenece+ms02_0238+
@@ -56,7 +65,8 @@ m6=glm(ms02_0208~ms01_0101a+pertenece+ms02_0238+area+actuni_m,
 summary(m6)
 
 
-#Modelo Logit
+#5. Modelo Logit determinantes de la fecundidad
+#Transformación variable hijos (dicotómica en base a ms02_0208)
 #TRUE=Si tiene uno o más hijos
 #FALSE=Si no tiene hijos
 
@@ -133,3 +143,8 @@ paste("Diferencia de residuos:", round(dif_residuos, 4))
 #pseudo R2
 1- (mod1$deviance/mod1$null.deviance) #80.73
 1- (mod2$deviance/mod2$null.deviance) #80.33
+
+
+#6. Modelo logit para la alta fecundidad
+
+
