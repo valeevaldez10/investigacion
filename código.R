@@ -25,7 +25,7 @@ bd1 <- inner_join(datos,datos1,by="folio")
 
 
 #2.Seleccionando las variables a usar
-bd <- bd1 %>% select(ms02_0208,qriqueza,ms08_0809,niv_ed,aestudio,
+bd <- bd1 %>% select(ms02_0208,qriqueza,ms08_0809,niv_ed_g,aestudio,
                      ms02_0276,cono_algmet,actmaconcep_cme_m,ms01_0108,
                      ms01_0106,departamento,region,area,ms01_0101a,
                      actuni_m)
@@ -57,7 +57,7 @@ str(bd)
 #4. Modelo Poisson
 
 #modelo inicial
-m=glm(ms02_0208~qriqueza+ms08_0809+niv_ed+aestudio+
+m=glm(ms02_0208~qriqueza+ms08_0809+niv_ed_g+aestudio+
         ms02_0276+cono_algmet+actmaconcep_cme_m+pertenece+
         idioma_orig+departamento+region+area+ms01_0101a+actuni_m, 
        data=bd, family="poisson")
@@ -66,12 +66,12 @@ summary(m)
 #modelo con el método backward
 m1<-step(m,direction = "backward")
 summary(m1)
-#AIC: 33199
+#AIC: 32486
 
 #modelo con las variables más significativas
 m2=glm(ms02_0208~ms01_0101a+pertenece+area+actuni_m, 
        data=bd, family="poisson")
-summary(m3)
+summary(m2)
 
 
 #5. Modelo Logit determinantes de la fecundidad
@@ -84,7 +84,7 @@ bd <- bd %>% mutate(hijos=(ms02_0208>=1))
 bd$hijos
 
 #modelo inicial
-m3=glm(hijos~qriqueza+ms08_0809+niv_ed+aestudio+
+m3=glm(hijos~qriqueza+ms08_0809+niv_ed_g+aestudio+
         ms02_0276+cono_algmet+actmaconcep_cme_m+pertenece+
         idioma_orig+departamento+region+area+ms01_0101a+actuni_m, 
       data=bd, family=binomial(link = "logit"))
@@ -93,7 +93,7 @@ summary(m3)
 #modelo con el método backward
 m4<-step(m3,direction = "backward")
 summary(m4)
-#AIC=6271.4
+#AIC=6279.2
 
 
 #modelo con variables más significativas
@@ -109,7 +109,7 @@ matriz1 = table(predicciones1,observados1, dnn = c("predicciones", "observacione
 matriz1 <- rbind(matriz1[2, ], matriz1[1, ])
 rownames(matriz1)<-c("Si","No")
 confusionMatrix(matriz1)
-#Hay un accuracy de 88.59%
+#Hay un accuracy de 88.38%
 
 
 
@@ -134,7 +134,7 @@ bd <- bd %>% mutate(a_hijos=(ms02_0208>=4))
 bd$a_hijos
 
 #modelo inicial
-m6=glm(a_hijos~qriqueza+ms08_0809+niv_ed+aestudio+
+m6=glm(a_hijos~qriqueza+ms08_0809+niv_ed_g+aestudio+
          ms02_0276+cono_algmet+actmaconcep_cme_m+pertenece+
          idioma_orig+departamento+region+area+ms01_0101a+actuni_m, 
        data=bd, family=binomial(link = "logit"))
@@ -143,11 +143,11 @@ summary(m6)
 #modelo con el método backward
 m7<-step(m6,direction = "backward")
 summary(m7)
-#AIC=6959.7
+#AIC=6994.5
 
 
 #modelo con variables más significativas
-m8=glm(a_hijos~qriqueza+ms08_0809+niv_ed+aestudio+
+m8=glm(a_hijos~qriqueza+ms08_0809+niv_ed_g+aestudio+
          actmaconcep_cme_m+area+ms01_0101a+actuni_m, 
        data=bd, family=binomial(link = "logit"))
 summary(m8)
@@ -161,7 +161,7 @@ matriz2 <- rbind(matriz2[2, ], matriz2[1, ])
 rownames(matriz2)<-c("Si","No")
 matriz2
 confusionMatrix(matriz2)
-#Hay un accuracy de 85.04%
+#Hay un accuracy de 84.91%
 
 
 ### Mosaico de la tabla de contingencia - modelo m7
@@ -180,26 +180,14 @@ vif(m7)
 # En R, un objeto glm almacena la "deviance" del modelo, así como la "deviance"
 # del modelo nulo. 
 
-#usando m4
-dif_residuos <- m4$null.deviance - m4$deviance
-
-#usando m7
-dif_residuos2 <- m7$null.deviance - m7$deviance
-
-# Grados libertad
-df <- m4$df.null - m4$df.residual  #m4
-df2 <- m7$df.null - m7$df.residual #m7
-
-# p-value m4
-p_value <- pchisq(q = dif_residuos,df = df, lower.tail = FALSE)
-p_value
-paste("Diferencia de residuos:", round(dif_residuos, 4))
-
-#p-value m7
-p_value <- pchisq(q = dif_residuos2,df = df2, lower.tail = FALSE)
-p_value
-paste("Diferencia de residuos:", round(dif_residuos2, 4))
 
 #pseudo R2
-1- (m4$deviance/m4$null.deviance) #47.35
-1- (m7$deviance/m7$null.deviance) #32.19
+1- (m1$deviance/m1$null.deviance) #Poisson: 48.88
+1- (m4$deviance/m4$null.deviance) #Logit: 47.37
+1- (m7$deviance/m7$null.deviance) #Logit alta fecundidad: 31.81
+
+
+#devianza
+m1$deviance #Poisson: 9262.23
+m4$deviance #Logit: 6229.16
+m7$deviance #Logit alta fecundidad: 6946.55
