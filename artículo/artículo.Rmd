@@ -16,6 +16,10 @@ bibliographystyle: sageh
 output:
   rticles::sage_article:
     keep_tex: yes
+  pdf_document:
+    fig_caption: true
+    toc: true
+    number_sections: true
 ---
 
 # Introducción
@@ -59,19 +63,99 @@ En Bolivia, tomando en cuenta los resultados presentados en la Encuesta de Demog
 
 [^c]: La tasa global de fecundidad se entiende como el número promedio de hijos que tendrá una mujer a lo largo de su vida fértil, comprendida entre los 15 a 49 años.
 
-```{r fig1, echo=FALSE, out.width='80%', fig.align='center'}
-knitr::include_graphics("imagenes/1.png")
+
+```{r echo=FALSE, fig.cap="Evolución de la Tasa Global de Fecundidad en Bolivia y países de la región.\\\\\\textit{Fuente: INE, 2023 - en base a la ENDSA 1994, 1998, 2003 y 2008, EDSA 2016 y 2023, y Banco Mundial 2022.}", out.width="100%", fig.align='center'}
+knitr::include_graphics("imagenes/foto1.jpg")
 ```
 
 
-# Marco Teórico/ Revisión de literatura
+De esta forma, la investigación surge como un aporte dentro de la necesidad de generar evidencia empírica que contribuya a entender los determinantes sociales, económicos y culturales de la fecundidad en Bolivia, utilizando la Encuesta de Demografía y Salud (EDSA 2023), que además se enfoque en analizar componentes actuales dentro de esta temática. Para que así, se pueda entender de mejor forma la disminución en la tasa global de fecundidad observada en los últimos años, y se puedan plantear políticas o programas que respondan a estos resultados. Igualmente, la investigación emplea los modelos de regresión logit y Poisson, los cuales en base a su connotación teórica y práctica permiten llevar a cabo el estudio. 
+
+# Marco Teórico
+
+## Fecundidad y Fertilidad
+La fecundidad y la fertilidad son conceptos centrales en la demografía debido a ser indicadores relevantes al analizar la dinámica demográfica y el crecimiento de una población. Aunque frecuentemente son usados como sinónimos, tienen significados distintos. Mientras que la fertilidad alude a la capacidad biológica de tener hijos, la fecundidad se refiere al número efectivo de nacimientos (Rodríguez Vignoli, 2014). De esta forma, la fecundidad se convierte en una variable clave en la planificación de políticas públicas debido a su impacto en la estructura poblacional y en la demanda de servicios educativos, sanitarios, laborales y sistemas de seguridad social (CEPAL, 2020).
+
+Un aporte relevante al estudio de la fertilidad es realizado por T.P. Schultz (2006), quien establece una relación inversa entre el ingreso y la fecundidad. Según su análisis, a medida que aumenta el ingreso y la educación de las mujeres, la fecundidad tiende a disminuir, lo que responde tanto a la mayor participación femenina en el mercado laboral como a un cambio en las preferencias familiares respecto a la planificación reproductiva. Este enfoque ha sido retomado en estudios posteriores para explicar patrones reproductivos en países en desarrollo. En el caso de América Latina, ha atravesado una transición demográfica significativa donde se observó una reducción en las tasas de fecundidad en la región. Sin embargo, esta disminución no ha sido homogénea, ya que persisten niveles elevados en ciertos grupos poblacionales, especialmente en zonas rurales y entre mujeres con menor acceso a educación y/o servicios (Schultz, 2006).
+
+Por otro lado, como Schultz (2006) menciona en su capítulo “Fertility and Income”, las variables determinantes de la fecundidad femenina pueden ser fundamentadas bajo un enfoque económico y provenir de la evidencia y la teoría microeconómica. Ante esto, las principales variables que afectan la fecundidad según Schultz son: el ingreso, la educación, el uso de anticonceptivos y la planificación familiar, la mortalidad infantil, el entorno social y cultural y otras variables exógenas que pueden tomar en cuenta la edad de la mujer y el estado conyugal.
+
+## Determinantes de la fecundidad según Schultz
+
+El ingreso es entendido de dos formas: la primera se refiere al ingreso derivado del capital físico, como ser la tierra, que tiende a aumentar la fecundidad, pues incrementa el consumo familiar y el valor financiero inmediato de tener más hijos, y la segunda toma en cuenta el ingreso derivado del capital humano de la mujer, es decir los ingresos propios de la mujer, el cual tiende a reducir la fecundidad, debido al mayor costo de oportunidad del tiempo de la mujer con el hecho de llegar a ser madre. Por otro lado, la educación de la madre es un factor relevante ya que mayores años de escolaridad femenino están asociados de forma negativa con la tasa de fecundidad. La educación incrementa el costo de oportunidad de la maternidad y repercute de manera positiva en el status y la autonomía de la mujer (Enríquez-Canto, Ortiz-Romaní & Ortiz-Montalvo, 2017).
+
+En lo que respecta a los métodos anticonceptivos y la planificación familiar, Schultz denota que el acceso a métodos anticonceptivos reduce de forma efectiva la fecundidad para una pareja. Así mismo, Schultz indica que dicho aspecto está íntimamente ligado a la educación y la salud reproductiva dentro de una pareja. Por otro lado, al hablar de la mortalidad infantil, una reducción en este indicador genera que la esperanza por tener más hijos disminuya para una familia, lo cual reduce la fecundidad. De esta forma, se enfatiza la influencia de la supervivencia infantil en las decisiones reproductivas (Schultz, 2006). 
+
+Las normas sociales y culturales sobre familia y fecundidad, así como el entorno social, condicionan las expectativas sobre el tamaño ideal del hogar; aunque Schultz se centra más en factores económicos, su análisis reconoce esta dimensión. Adicionalmente, es necesario mencionar la relevancia de esta última variable en el estudio de la fecundidad, ya que se asocia la reducción de las tasas de fecundidad a nivel de país e incluso a nivel mundial con el cambio dentro de las expectativas personales y/o profesionales dentro de los jóvenes y los nuevos ideales del tamaño familiar. Mismas variables están intrínsicamente relacionadas con la sociedad y cultura moderna (Enríquez-Canto, Ortiz-Romaní & Ortiz-Montalvo, 2017).
+
+Finalmente, pese a que Schultz no menciona a la edad y el estado conyugal de una mujer como determinantes causal principales en su modelo, estas variables pueden ser cruciales en términos del horizonte fértil y el momento de decisión de reproducción para una familia. Como tal, Schultz analiza la fecundidad acumulada por edades específicas, añadiendo así de forma implícita a la edad como parte de la estructura de oportunidades de fecundidad. Respecto al estado conyugal, el hecho de estar en pareja formal (ya se en matrimonio o convivencia) facilita o incrementa la probabilidad de tener hijos. A su vez, la decisión de formar pareja también puede verse influida por variables económicas, como el ingreso esperado o la educación.
+
+## Alta fecundidad
+
+La alta fecundidad se refiere a niveles por encima del reemplazo poblacional, que aproximadamente resulta ser 2.1 hijos por mujer. Entendiendo al reemplazo poblacional como el número promedio de hijos que una mujer necesita tener para que, en promedio, cada generación reemplace a la anterior en una población sin crecimiento ni disminución. Ciertos autores como Bongaarts (2015) y UNFPA (2023) toman en cuenta a la alta fecundidad para valores de la tasa global de fecundidad mayores a cuatro. En contextos como Bolivia, este fenómeno está asociado con bajos niveles educativos, pobreza, desigualdad de género, y acceso limitado a servicios tanto de salud sexual como reproductiva (UNFPA, 2023). De esta manera, como mencionan estudios recientes, se destaca que la alta fecundidad puede constituir una barrera para el desarrollo económico y la equidad, particularmente cuando se presenta en mujeres adolescentes o en grupos marginados (Binstock, 2021).
+
+## Regresión logística
+
+La regresión logística es una técnica estadística utilizada para modelar relaciones entre una variable dependiente dicotómica (binaria 1/0) y un conjunto de variables independientes que pueden ser cualitativas o cuantitativas. A diferencia de la regresión lineal, este modelo estima la probabilidad de ocurrencia de un evento binario, como presencia y ausencia o éxito y fracaso, mediante la función logística, la cual garantiza que los valores predichos se encuentren entre 0 y 1.
+
+Desde 2010, la regresión logística ha mantenido un rol central clave en investigaciones aplicadas dentro de la epidemiología, ciencias sociales y economía, como herramienta para obtener resultados importantes según los objetivos que se tengan. Según Hosmer, Lemeshow y Sturdivant (2013), la interpretación de los coeficientes de una regresión logística permite entender el cambio de las chances (odds) en la probabilidad de un evento por unidad de cambio en la variable predictora, lo cual resulta especialmente útil en contextos donde se busca analizar las posibilidades de ocurrencia de un suceso. En lo que compete al análisis de los determinantes de la fecundidad, los modelos estadísticos como la regresión logística son adecuados a la hora de modelar variables dicotómicas como "tener hijos o no".
+
+## Regresión Poisson
+
+La Regresión Poisson es un modelo no lineal que toma en cuenta a una variable cualitativa discreta como la variable dependiente, en general modela y predice variables de conteo. Esta regresión parte de la distribución Poisson que precisamente se utiliza para analizar conteos o números de eventos en un intervalo dado. De esta forma, en estos casos, la variable dependiente toma más de dos valores discretos no negativos (números del 0, 1, 2, en adelante). La distribución Poisson es utilizado comúnmente para modelar el número de ocurrencias de cierto evento en un medio continuo (generalmente hace referencia al tiempo), por ejemplo, es útil para modelar conteos como el número de hijos que tiene una mujer adulta en edad fértil. Siendo de esta forma un instrumento correcto para el presente estudio.
+
 
 # Descripción del dataset
 
+Los datos que se usaron para trabajar con el modelado, tanto de la regresión logística como de la regresión Poisson, fueron obtenidos a través de la última versión de la Encuesta de Demografía y Salud (EDSA), realizada por el INE en 2023. La encuesta EDSA forma parte de las investigaciones que se realizan de forma periódica y a nivel nacional, con el fin de proporcionar información para el cálculo referente a los principales indicadores de salud y demografía como ser la fecundidad, salud materna e infantil, mortalidad infantil y de niñez, vacunación, estado nutricional de los menores de seis años y anticoncepción. Posteriormente, esta información se convierte en el pilar fundamental para formular y evaluar el diseño de políticas públicas y programas que se implementen en Bolivia bajo el Plan de Desarrollo Económico y Social (PDES).
+
+La EDSA 2023 fue realizada bajo cuatro cuestionarios temáticos: cuestionario hogar, cuestionario mujer, cuestionar hombre y el cuestionario de primera infancia, donde cada uno de ellos aborda preguntas diferentes enfocados en la población a la que se encuesta. Para motivos del análisis de datos de la investigación, se utilizaron los datos provenientes del cuestionario mujer, donde se obtiene información respectiva a los datos personales y preferencias de reproducción de las mujeres, y también la información del cuestionario hogar para obtener el ingreso de la familia (esta variable será aproximada mediante el quintil de riqueza).
+
+Así, las variables[^d] seleccionadas de forma inicial para realizar la regresión logit y Poisson son detalladas en la tabla 1. El motivo por el cual se seleccionaron estás variables va en línea con la teoría descrita por Schultz (2006) sobre los factores económicos y sociales que influyen en la tasa de fecundidad. En el caso de determinante de mortalidad infantil, no existe una variable que recoja esta información proveniente de la EDSA 2023, por lo que no será tomada en cuenta.
+
+[^d]: El diccionario de variables de la EDSA 2023 puede ser encontrado en el catálogo ANDA.
+
+```{r echo=FALSE, fig.cap="Descripción de las variables usadas en ambos modelos de forma inicial..\\\\\\textit{Fuente: Elaboración propia.}", out.width="100%", fig.align='center'}
+knitr::include_graphics("imagenes/foto2.jpg")
+```
+
+
+Respecto a las variables idioma_orig y pertenece se hizo una transformación de las variables ms01_0106 (idioma o lengua que se aprendió a hablar en la niñez) y ms01_0108 (nación o pueblo originario al que pertenece). Así, la variable idioma_orig toma en cuenta si la mujer aprendió a hablar un idioma originario en su niñez como el éxito, para de esta forma conocer si la mujer nació en una familia originaria. En el caso de la variable pertenece se toma en cuenta si la mujer pertenece a un pueblo o nación originaria como el éxito, para conocer si se considera parte de un pueblo indígena.
+
+## Regresión logit
+
+La regresión logit para los determinantes de la fecundidad se toma en cuenta a las mujeres mayores a 19 años. La variable dependiente en este caso corresponde a una transformación sobre la variable ms02_0208, donde se toma en cuenta una variable dicotómica (denominada hijos) con el éxito cuando el número de hijos es por lo menos uno y el fracaso cuando el número de hijos es igual a cero.
+
+En el caso de la regresión logit para analizar la alta fecundidad también se realizó transformación sobre la variable ms02_0208, pero en este caso el éxito se tomó cuando el número de hijos es por lo menos cuatro y el fracaso cuando el número de hijos es menor a cuatro.
+
+## Regresión Poisson
+
+La regresión Poisson se toma en cuenta a las mujeres mayores a 19 años, donde la variable dependiente en este caso corresponde a la variable ms02_0208, que representa el número de hijos vivos de una mujer.
 
 # Metodología
 
 # Resultados y análisis
+
+## Regresión Poisson
+
+```{r echo=FALSE, fig.cap="Descripción de las variables usadas en ambos modelos de forma inicial..\\\\\\textit{Fuente: Elaboración propia.}", out.width="100%", fig.align='center'}
+knitr::include_graphics("imagenes/foto3.jpg")
+```
+
+
+## Regresión Logit
+
+```{r echo=FALSE, fig.cap="Descripción de las variables usadas en ambos modelos de forma inicial..\\\\\\textit{Fuente: Elaboración propia.}", out.width="100%", fig.align='center'}
+knitr::include_graphics("imagenes/foto4.jpg")
+```
+
+
+## Regresión Logit para alta fecundidad
+
+```{r echo=FALSE, fig.cap="Descripción de las variables usadas en ambos modelos de forma inicial..\\\\\\textit{Fuente: Elaboración propia.}", out.width="100%", fig.align='center'}
+knitr::include_graphics("imagenes/foto5.jpg")
+```
+
 
 # Conclusiones y recomendaciones
 
