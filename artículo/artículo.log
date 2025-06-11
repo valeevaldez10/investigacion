@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.20)  10 JUN 2025 23:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.3.20)  11 JUN 2025 00:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -444,33 +444,15 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
 \Hy@SectionHShift=\skip67
-) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
-Package: longtable 2023-11-01 v4.19 Multi-page Table package (DPC)
-\LTleft=\skip68
-\LTright=\skip69
-\LTpre=\skip70
-\LTpost=\skip71
-\LTchunksize=\count306
-\LTcapwidth=\dimen197
-\LT@head=\box57
-\LT@firsthead=\box58
-\LT@foot=\box59
-\LT@lastfoot=\box60
-\LT@gbox=\box61
-\LT@cols=\count307
-\LT@rows=\count308
-\c@LT@tables=\count309
-\c@LT@chunks=\count310
-\LT@p@ftn=\toks36
+) (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count306
+\float@exts=\toks36
+\float@box=\box57
+\@float@everytoks=\toks37
+\@floatcapt=\box58
 )
-(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/footnotehyper\footnot
-ehyper.sty
-Package: footnotehyper 2021/08/13 v1.1e hyperref aware footnote.sty (JFB)
-\FNH@notes=\box62
-\FNH@width=\dimen198
-\FNH@toks=\toks37
-)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
 7.
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -478,44 +460,43 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-p
 dftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count311
-\l__pdf_internal_box=\box63
-)
-No file artículo.aux.
+\l__color_backend_stack_int=\count307
+\l__pdf_internal_box=\box59
+) (artículo.aux)
 \openout1 = `artículo.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.
 mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count312
-\scratchdimen=\dimen199
-\scratchbox=\box64
-\nofMPsegments=\count313
-\nofMParguments=\count314
+\scratchcounter=\count308
+\scratchdimen=\dimen197
+\scratchbox=\box60
+\nofMPsegments=\count309
+\nofMParguments=\count310
 \everyMPshowfont=\toks38
-\MPscratchCnt=\count315
-\MPscratchDim=\dimen256
-\MPnumerator=\count316
-\makeMPintoPDFobject=\count317
+\MPscratchCnt=\count311
+\MPscratchDim=\dimen198
+\MPnumerator=\count312
+\makeMPintoPDFobject=\count313
 \everyMPtoPDFconversion=\toks39
 )
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf
@@ -565,137 +546,202 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
-Package caption Info: longtable package is loaded.
-
-(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
-Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
-)
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 27.
+Package hyperref Info: Link coloring ON on input line 17.
+(artículo.out) (artículo.out)
 \@outlinefile=\write4
 \openout4 = `artículo.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 4
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
 5.
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 45.
+(Font)              scaled to size 9.49997pt on input line 35.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 11.39996pt on input line 45.
+(Font)              scaled to size 11.39996pt on input line 35.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 11.39996pt on input line 45.
+(Font)              scaled to size 11.39996pt on input line 35.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 9.49997pt on input line 45.
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 47
+(Font)              scaled to size 9.49997pt on input line 35.
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 37
 .
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 17.09995pt on input line 52.
+(Font)              scaled to size 17.09995pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 17.09995pt on input line 52.
+(Font)              scaled to size 17.09995pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 52.
-
-LaTeX Warning: Reference `FirstPage' on page 1 undefined on input line 52.
-
-
-LaTeX Warning: Reference `LastPage' on page 1 undefined on input line 52.
-
-LaTeX Font Info:    Trying to load font information for TS1+phv on input line 5
+(Font)              scaled to size 6.64998pt on input line 42.
+LaTeX Font Info:    Trying to load font information for TS1+phv on input line 4
 2.
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1phv.fd
 File: ts1phv.fd 2020/03/25 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
-(Font)              scaled to size 6.64998pt on input line 52.
+(Font)              scaled to size 6.64998pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 7.59998pt on input line 52.
+(Font)              scaled to size 7.59998pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 5.69998pt on input line 52.
+(Font)              scaled to size 5.69998pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 7.59998pt on input line 52.
+(Font)              scaled to size 7.59998pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 5.69998pt on input line 52.
+(Font)              scaled to size 5.69998pt on input line 42.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 4.74998pt on input line 52.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 6
+(Font)              scaled to size 4.74998pt on input line 42.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
 6.
 (C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <7> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 83.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 73.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 6.64998pt on input line 83.
+(Font)              scaled to size 6.64998pt on input line 73.
 [1
 
 {C:/Users/USUARIO/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/US
 UARIO/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 99.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 89.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 11.39996pt on input line 99.
+(Font)              scaled to size 11.39996pt on input line 89.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <10> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 145.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 136.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 9.49997pt on input line 145.
+(Font)              scaled to size 9.49997pt on input line 136.
 [2]
-<imagenes/foto1.png, id=29, 678.73575pt x 304.7385pt>
+<imagenes/foto1.png, id=112, 678.73575pt x 304.7385pt>
 File: imagenes/foto1.png Graphic file (type png)
 <use imagenes/foto1.png>
-Package pdftex.def Info: imagenes/foto1.png  used on input line 168.
+Package pdftex.def Info: imagenes/foto1.png  used on input line 159.
 (pdftex.def)             Requested size: 352.81416pt x 158.40912pt.
 LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
-(Font)              scaled to size 8.54997pt on input line 172.
+(Font)              scaled to size 8.54997pt on input line 163.
 LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
-(Font)              scaled to size 8.54997pt on input line 172.
+(Font)              scaled to size 8.54997pt on input line 163.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 172.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 163.
 LaTeX Font Info:    Font shape `OT1/phv/m/sl' will be
-(Font)              scaled to size 8.54997pt on input line 172.
+(Font)              scaled to size 8.54997pt on input line 163.
 
 Overfull \vbox (3.91464pt too high) has occurred while \output is active []
 
 [3]
+
+Package natbib Warning: Citation `enriquez2017determinantes' on page 4 undefine
+d on input line 232.
+
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[4 <./imagenes/foto1.png>] [5] [6]
+[4 <./imagenes/foto1.png>]
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 373.
+Package natbib Warning: Citation `enriquez2017determinantes' on page 5 undefine
+d on input line 254.
 
 
-Overfull \hbox (5.34459pt too wide) in paragraph at lines 398--398
-[]|\OT1/ptm/m/n/10 cono[]algmet|  
- []
+Package natbib Warning: Citation `binstock2014entornos' on page 5 undefined on 
+input line 283.
 
-! Undefined control sequence.
-l.399 & actmaconcep\n
-                     \_cme\_m & Si actualmente usa algún método 
+[5] [6]
+<imagenes/foto2.png, id=139, 528.7755pt x 757.6305pt>
+File: imagenes/foto2.png Graphic file (type png)
+<use imagenes/foto2.png>
+Package pdftex.def Info: imagenes/foto2.png  used on input line 362.
+(pdftex.def)             Requested size: 317.53058pt x 454.97487pt.
+[7]
+Overfull \vbox (25.59888pt too high) has occurred while \output is active []
+
+[8 <./imagenes/foto2.png>]
+<imagenes/foto3.png, id=151, 579.3645pt x 750.4035pt>
+File: imagenes/foto3.png Graphic file (type png)
+<use imagenes/foto3.png>
+Package pdftex.def Info: imagenes/foto3.png  used on input line 435.
+(pdftex.def)             Requested size: 317.53058pt x 411.28047pt.
+<imagenes/foto4.png, id=152, 576.9555pt x 768.471pt>
+File: imagenes/foto4.png Graphic file (type png)
+<use imagenes/foto4.png>
+Package pdftex.def Info: imagenes/foto4.png  used on input line 456.
+(pdftex.def)             Requested size: 317.53058pt x 422.94177pt.
+<imagenes/mosaico1.png, id=153, 398.08725pt x 335.45325pt>
+File: imagenes/mosaico1.png Graphic file (type png)
+<use imagenes/mosaico1.png>
+Package pdftex.def Info: imagenes/mosaico1.png  used on input line 469.
+(pdftex.def)             Requested size: 211.69064pt x 178.38312pt.
+[9]
+<imagenes/foto5.png, id=158, 579.3645pt x 797.379pt>
+File: imagenes/foto5.png Graphic file (type png)
+<use imagenes/foto5.png>
+Package pdftex.def Info: imagenes/foto5.png  used on input line 492.
+(pdftex.def)             Requested size: 317.53058pt x 437.02676pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[10 <./imagenes/foto3.png>]
+<imagenes/mosaico2.png, id=164, 398.08725pt x 335.45325pt>
+File: imagenes/mosaico2.png Graphic file (type png)
+<use imagenes/mosaico2.png>
+Package pdftex.def Info: imagenes/mosaico2.png  used on input line 505.
+(pdftex.def)             Requested size: 211.69064pt x 178.38312pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+[11 <./imagenes/foto4.png>] (artículo.bbl
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+3.
+(C:\Users\USUARIO\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+) [12 <./imagenes/mosaico1.png>] [13 <./imagenes/foto5.png>])
+
+Package natbib Warning: There were undefined citations.
+
+[14 <./imagenes/mosaico2.png>] (artículo.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-04>
+ ***********
+Package rerunfilecheck Info: File `artículo.out' has not changed.
+(rerunfilecheck)             Checksum: E8083985B4D56B5F9FC74725DB1AECBF;3058.
+ ) 
 Here is how much of TeX's memory you used:
- 13225 strings out of 474485
- 211167 string characters out of 5742790
+ 13249 strings out of 474485
+ 211643 string characters out of 5742790
  1938542 words of memory out of 5000000
- 35253 multiletter control sequences out of 15000+600000
- 601944 words of font info for 115 fonts, out of 8000000 for 9000
+ 35234 multiletter control sequences out of 15000+600000
+ 604669 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,8n,79p,548b,498s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,8n,79p,548b,579s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
+m/cmsy6.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/urw/cou
+rier/ucrr8a.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type1/urw
+/helvetic/uhvb8a.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts/type
+1/urw/helvetic/uhvr8a.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX/fonts
+/type1/urw/helvetic/uhvro8a.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKTeX
+/fonts/type1/urw/times/utmb8a.pfb><C:/Users/USUARIO/AppData/Local/Programs/MiKT
+eX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/USUARIO/AppData/Local/Programs/Mi
+KTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on artículo.pdf (14 pages, 433977 bytes).
+PDF statistics:
+ 239 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
+ 196 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!
 
 ! pdflatex: major issue: So far, you have not checked for MiKTeX updates.

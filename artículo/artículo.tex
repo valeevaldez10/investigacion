@@ -9,19 +9,9 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% From pandoc table feature
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
 
 
+\usepackage{float}
 
 
 \begin{document}
@@ -92,7 +82,7 @@ partir de variables independientes, lo cual resulta clave para
 identificar factores de fecundidad. Por otro lado, la regresión Poisson
 permite examinar cómo varía la fecundidad en cuanto al número de hijos
 según características individuales como la edad, nivel educativo,
-actividad económica o pertenencia étnica (Schultz, 2006).
+actividad económica o pertenencia étnica \citep{schultz2006fertility}.
 
 \section{Objetivos}\label{objetivos}
 
@@ -135,13 +125,14 @@ La fecundidad constituye uno de los indicadores demográficos más
 relevantes dentro de la dinámica de un país, ya que influye de forma
 directa en el crecimiento de una población, la estructura por edades y,
 como consecuencia, permite diseñar políticas sociales y económicas como
-sean requeridas. Como menciona Schultz (2006), el estudio de la
-fecundidad no solo se reserva a una decisión propia de una familia o
-persona, si no que tiene fuertes implicaciones económicas y sociales
-dentro de una sociedad. A partir de esto, se refuerza la influencia de
-la fecundidad como un factor esencial del desarrollo de un país y la
-importancia de comprender los factores que determinan la fecundidad
-dentro de una economía, para poder entender su comportamiento.
+sean requeridas. Como menciona Schultz \citep{schultz2006fertility}, el
+estudio de la fecundidad no solo se reserva a una decisión propia de una
+familia o persona, si no que tiene fuertes implicaciones económicas y
+sociales dentro de una sociedad. A partir de esto, se refuerza la
+influencia de la fecundidad como un factor esencial del desarrollo de un
+país y la importancia de comprender los factores que determinan la
+fecundidad dentro de una economía, para poder entender su
+comportamiento.
 
 En Bolivia, tomando en cuenta los resultados presentados en la Encuesta
 de Demografía y Salud, se ha observado que persisten diferencias
@@ -212,7 +203,7 @@ demográfica significativa donde se observó una reducción en las tasas de
 fecundidad en la región. Sin embargo, esta disminución no ha sido
 homogénea, ya que persisten niveles elevados en ciertos grupos
 poblacionales, especialmente en zonas rurales y entre mujeres con menor
-acceso a educación y/o servicios (Schultz, 2006).
+acceso a educación y/o servicios \citep{schultz2006fertility}.
 
 Por otro lado, como Schultz (2006) menciona en su capítulo ``Fertility
 and Income'', las variables determinantes de la fecundidad femenina
@@ -238,8 +229,7 @@ madre. Por otro lado, la educación de la madre es un factor relevante ya
 que mayores años de escolaridad femenino están asociados de forma
 negativa con la tasa de fecundidad. La educación incrementa el costo de
 oportunidad de la maternidad y repercute de manera positiva en el status
-y la autonomía de la mujer (Enríquez-Canto, Ortiz-Romaní \&
-Ortiz-Montalvo, 2017).
+y la autonomía de la mujer \citep{enriquez2017determinantes}.
 
 En lo que respecta a los métodos anticonceptivos y la planificación
 familiar, Schultz denota que el acceso a métodos anticonceptivos reduce
@@ -249,7 +239,8 @@ salud reproductiva dentro de una pareja. Por otro lado, al hablar de la
 mortalidad infantil, una reducción en este indicador genera que la
 esperanza por tener más hijos disminuya para una familia, lo cual reduce
 la fecundidad. De esta forma, se enfatiza la influencia de la
-supervivencia infantil en las decisiones reproductivas (Schultz, 2006).
+supervivencia infantil en las decisiones reproductivas
+\citep{schultz2006fertility}.
 
 Las normas sociales y culturales sobre familia y fecundidad, así como el
 entorno social, condicionan las expectativas sobre el tamaño ideal del
@@ -260,8 +251,7 @@ que se asocia la reducción de las tasas de fecundidad a nivel de país e
 incluso a nivel mundial con el cambio dentro de las expectativas
 personales y/o profesionales dentro de los jóvenes y los nuevos ideales
 del tamaño familiar. Mismas variables están intrínsicamente relacionadas
-con la sociedad y cultura moderna (Enríquez-Canto, Ortiz-Romaní \&
-Ortiz-Montalvo, 2017).
+con la sociedad y cultura moderna \citep{enriquez2017determinantes}.
 
 Finalmente, pese a que Schultz no menciona a la edad y el estado
 conyugal de una mujer como determinantes causal principales en su
@@ -290,7 +280,7 @@ limitado a servicios tanto de salud sexual como reproductiva (UNFPA,
 2023). De esta manera, como mencionan estudios recientes, se destaca que
 la alta fecundidad puede constituir una barrera para el desarrollo
 económico y la equidad, particularmente cuando se presenta en mujeres
-adolescentes o en grupos marginados (Binstock, 2021).
+adolescentes o en grupos marginados \citep{binstock2014entornos}.
 
 \subsection{Regresión logística}\label{regresiuxf3n-loguxedstica}
 
@@ -360,57 +350,21 @@ aproximada mediante el quintil de riqueza).
 Así, las variables\footnote{El diccionario de variables de la EDSA 2023
   puede ser encontrado en el catálogo ANDA.} seleccionadas de forma
 inicial para realizar la regresión logit y Poisson son detalladas en la
-tabla 1. El motivo por el cual se seleccionaron estás variables va en
+figura 2. El motivo por el cual se seleccionaron estás variables va en
 línea con la teoría descrita por Schultz (2006) sobre los factores
 económicos y sociales que influyen en la tasa de fecundidad. En el caso
 de determinante de mortalidad infantil, no existe una variable que
 recoja esta información proveniente de la EDSA 2023, por lo que no será
 tomada en cuenta.
 
-\subsubsection{Tabla 1. Variables utilizadas en el
-estudio}\label{tabla-1.-variables-utilizadas-en-el-estudio}
+\begin{figure}
 
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2422}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1366}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.6211}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Factor (según Schultz)
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Código variable
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Descripción
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\bottomrule\noalign{}
-\endlastfoot
-\textbf{Variable dependiente} & ms02\_0208 & Número de hijos nacidos
-vivos \\
-\textbf{Ingreso} & qriqueza & Quintil de riqueza del hogar \\
-& ms08\_0809 & Si trabajó de forma remunerada durante la semana
-pasada \\
-\textbf{Educación} & niv\_ed & Nivel de educación alcanzado general \\
-& aestudio & Años de estudio alcanzados por la encuestada \\
-\textbf{Métodos anticonceptivos y planificación familiar} & ms02\_0276 &
-Si recibió información sobre educación sexual \\
-& cono\_algmet & Conocimiento de métodos anticonceptivos \\
-& actmaconcep\n\_cme\_m & Si actualmente usa algún método
-anticonceptivo \\
-\textbf{Entorno social y cultural} & pertenece & Pertenencia a una
-nación o pueblo indígena (hecho en base a la variable ms01\_0108) \\
-& idioma\_orig & Si el primer idioma aprendido en la niñez es un idioma
-originario (hecho en base a la variable ms01\_0106) \\
-& departamento & Departamento de residencia \\
-& region & Región geográfica de residencia (altiplano, valle o llano) \\
-& area & Área de residencia (urbana o rural) \\
-\textbf{Edad} & ms01\_0101a & Edad cumplida en años \\
-\textbf{Estado conyugal} & actuni\_m & Si actualmente se encuentra en
-unión con una pareja \\
-\end{longtable}
+{\centering \includegraphics[width=0.9\linewidth]{imagenes/foto2} 
 
-\emph{Fuente: Elaboración propia en base a ENDSA, 2023.}
+}
+
+\caption{Descripción de las variables usadas en ambos modelos de forma inicial.\\\textit{Fuente: Elaboración propia.}}\label{fig:unnamed-chunk-2}
+\end{figure}
 
 Respecto a las variables idioma\_orig y pertenece se hizo una
 transformación de las variables ms01\_0106 (idioma o lengua que se
@@ -444,13 +398,147 @@ ms02\_0208, que representa el número de hijos vivos de una mujer.
 
 \section{Metodología}\label{metodologuxeda}
 
+El enfoque de la presente investigación es cuantitativo, debido a que se
+basa en la recolección y análisis de datos numéricos, a partir de la
+EDSA 2023, para examinar los determinantes de la fecundidad de manera
+objetiva. El tipo de estudio corresponde a una investigación
+correlacional, cuyo propósito es identificar y analizar la relación
+existente entre las variables que determinan la fecundidad, sin embargo
+no se establece causalidad directa. Igualmente, esta investigación se
+enmarca dentro del paradigma positivista, que sostiene que el
+conocimiento se obtiene a través de la observación empírica y la
+medición objetiva. Esto sucede dado que la investigación busca leyes
+generales que expliquen los fenómenos sociales y económicos de la
+fecundidad en Bolivia.
+
 \section{Resultados y análisis}\label{resultados-y-anuxe1lisis}
+
+Para las tres regresiones se empleó el método de eliminación hacia atrás
+(backward reduction) al momento de trabajar con el software y realizar
+el modelado, para seleccionar las variables más relevantes, equilibrando
+el criterio estadístico con fundamentos la teoría económica señalada por
+Schultz sobre la fecundidad. De esta forma, se buscó construir un modelo
+parsimonioso y explicativo, sin perder variables importantes.
+
+\subsection{Regresión Poisson}\label{regresiuxf3n-poisson-2}
+
+En la figura 3, se observa los resultados de la regresión Poisson donde
+se obtuvieron un modelo con variables significativas y un criterio de
+Akaike igual a 32486. Comparando con la teoría de Schultz, se observa
+que las variables que explican el número de hijos están asociadas con
+los determinantes de ingreso familiar, educación, conocimiento y uso de
+métodos anticonceptivos, el entorno social y cultural de la mujer, la
+edad y el estado conyugal.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{imagenes/foto3} 
+
+}
+
+\caption{Resultados de la modelación Poisson..\\\textit{Fuente: Elaboración propia.}}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+\subsection{Regresión Logit}\label{regresiuxf3n-logit-1}
+
+En la figura 4, se observa los resultados de la regresión logit donde se
+obtuvieron un modelo con variables significativas y un criterio de
+Akaike igual a 6279.2. Comparando con la teoría de Schultz, se observa
+que las variables que explican la fecundidad están asociadas con los los
+factores del ingreso familiar y también el propio de la mujer (medido a
+través de la variable trabajo remunerado), educación, conocimiento y uso
+de métodos anticonceptivos, el entorno social y cultural (pertenencia y
+nacimiento de un pueblo indígena) de la mujer, la edad y el estado
+conyugal.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{imagenes/foto4} 
+
+}
+
+\caption{Resultados de la modelación Logit.\\\textit{Fuente: Elaboración propia.}}\label{fig:unnamed-chunk-4}
+\end{figure}
+
+En la figura 5, se observa el mosaico de la matriz de confusión obtenida
+con la regresión logit realizada. De igual forma, la precisión obtenida
+por el modelo llega a ser del 88.38\%.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{imagenes/mosaico1} 
+
+}
+
+\caption{Resultados de la modelación Logit.\\\textit{Fuente: Elaboración propia.}}\label{fig:unnamed-chunk-5}
+\end{figure}
+
+\subsection{Regresión Logit para alta
+fecundidad}\label{regresiuxf3n-logit-para-alta-fecundidad}
+
+En el caso de la regresión logística para la alta fecundidad, en la
+figura 6 se observa los resultados de la regresión logit donde se obtuvo
+un modelo con variables significativas y un criterio de Akaike igual a
+6994.5. Comparando con la teoría de Schultz, se observa que las
+variables que explican la fecundidad están asociadas con los los
+factores del ingreso familiar y también el propio de la mujer (medido a
+través de la variable trabajo remunerado), educación, conocimiento y uso
+de métodos anticonceptivos, el entorno social y cultural (solo tomando
+en cuenta al nacimiento de un pueblo indígena) de la mujer, la edad y el
+estado conyugal.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.9\linewidth]{imagenes/foto5} 
+
+}
+
+\caption{Resultados de la modelación Logit para alta fecundidad.\\\textit{Fuente: Elaboración propia.}}\label{fig:unnamed-chunk-6}
+\end{figure}
+
+En la figura 7, se observa el mosaico de la matriz de confusión obtenida
+con la regresión logit realizada. De igual forma, la precisión obtenida
+por el modelo llega a ser del 84.91\%.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{imagenes/mosaico2} 
+
+}
+
+\caption{Resultados de la modelación Logit.\\\textit{Fuente: Elaboración propia.}}\label{fig:unnamed-chunk-7}
+\end{figure}
 
 \section{Conclusiones y
 recomendaciones}\label{conclusiones-y-recomendaciones}
 
+Finalmente, se logró realizar y analizar el modelo de regresión logit y
+Poisson para determinar los factores relevantes en la fecundidad en
+Bolivia. Siendo este aspecto de gran importancia para la población
+boliviana y la creación de políticas sociales, vista la tendencia de la
+tasa global de fecundidad durante los últimos años y habiendo destacado
+la relevancia de estos indicadores dentro de la dinámica demográfica y
+el crecimiento poblacional. Igualmente, se buscó analizar estos factores
+a través de la teoría económica y social propuesta por Schultz, la cual
+da grandes ideas sobre las variables que juegan un rol importante al
+momento de analizar la fecundidad en un país.
+
+De los resultados obtenidos se observó que en las tres regresiones los
+factores relevantes que van en coorcondancia con la teoría señalada por
+Schultz son el ingreso, educación, métodos anticonceptivos y planeación
+familiar, entorno social y cultural. Sin embargo, como variables
+exógenas se añadieron la edad y el estado conyugal las cuales resultaron
+significativas en los tres modelos.
+
+Como recomendaciones se resalta la importancia de llevar a cabo un
+estudio con datos recientes y posiblemente tomando en cuenta la variable
+mortalidad infantil para así analizar el efecto que tiene sobre la
+fecundidad en Bolivia. Igualmente, es aconsejable llevar a cabo otro
+estudio considerando otras variables como ser el ingreso de la familia o
+variables sobre la pareja de la mujer.
+
 \bibliographystyle{sageh}
-\bibliography{biblio}
+\bibliography{references.bib}
 
 
 \end{document}
