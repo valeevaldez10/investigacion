@@ -17,17 +17,22 @@ library(vcd)
 #1. Base datos a utilizar
 edsam<- read_sav("datasets/EDSA2023_Mujer.sav")
 edsav<- read_sav("datasets/EDSA2023_Vivienda.sav")
+
+#se seleccionan solo a las mujeres adultas (mayores de 19 años)
 datos<- edsam %>% filter(ms01_0101a>=20)
 datos1<-edsav %>% select(folio,qriqueza)
 bd1 <- inner_join(datos,datos1,by="folio")
 
 
 #2.Seleccionando las variables a usar
-bd <- bd1 %>% select(ms01_0101a,niv_ed,aestudio,
-                     qriqueza,ms01_0108,ms01_0106,ms02_0208,
-                     ms02_0276,ms05_0521,departamento,region,area,
-                     cono_algmet,actmaconcep_cme_m,actuni_m,ms08_0809)
+bd <- bd1 %>% select(ms02_0208,qriqueza,ms08_0809,niv_ed,aestudio,
+                     ms02_0276,cono_algmet,actmaconcep_cme_m,ms01_0108,
+                     ms01_0106,departamento,region,area,ms01_0101a,
+                     actuni_m)
+
+#las edades se encuentran entre 20 y 49 años
 hist(bd$ms01_0101a)
+table(bd$ms01_0101a)
 
 
 #3. Transformación sobre las variables
@@ -51,18 +56,22 @@ str(bd)
 
 #4. Modelo Poisson
 
-m6=glm(ms02_0208~ms01_0101a+niv_ed+aestudio+
-       qriqueza+pertenece+ms02_0238+
-       ms02_0276+ms05_0521+departamento+region+area+
-       cono_algmet+actuni_m+ms08_0809, 
+#modelo inicial
+m=glm(ms02_0208~qriqueza+ms08_0809+niv_ed+aestudio+
+        ms02_0276+cono_algmet+actmaconcep_cme_m+pertenece+
+        idioma_orig+departamento+region+area+ms01_0101a+actuni_m, 
        data=bd, family="poisson")
+summary(m)
 
-summary(m6)
+#modelo con el método backward
+m1<-step(m,direction = "backward")
+summary(m1)
+#AIC: 33199
 
-m6=glm(ms02_0208~ms01_0101a+pertenece+ms02_0238+area+actuni_m, 
+#modelo con las variables más significativas
+m2=glm(ms02_0208~ms01_0101a+pertenece+area+actuni_m, 
        data=bd, family="poisson")
-
-summary(m6)
+summary(m3)
 
 
 #5. Modelo Logit determinantes de la fecundidad
@@ -74,78 +83,123 @@ summary(m6)
 bd <- bd %>% mutate(hijos=(ms02_0208>=1))
 bd$hijos
 
-mod1=glm(hijos~ms01_0101a+aestudio+
-          pertenece+ms02_0238+
-          area+
-          cono_algmet+actuni_m+ms08_0809, 
+#modelo inicial
+m3=glm(hijos~qriqueza+ms08_0809+niv_ed+aestudio+
+        ms02_0276+cono_algmet+actmaconcep_cme_m+pertenece+
+        idioma_orig+departamento+region+area+ms01_0101a+actuni_m, 
+      data=bd, family=binomial(link = "logit"))
+summary(m3)
+
+#modelo con el método backward
+m4<-step(m3,direction = "backward")
+summary(m4)
+#AIC=6271.4
+
+
+#modelo con variables más significativas
+m5=glm(hijos~ms01_0101a+aestudio+pertenece+area+cono_algmet+actuni_m, 
        data=bd, family=binomial(link = "logit"))
-
-summary(mod1)
-#AIC=96.358 
+summary(m5)
 
 
-##NOS QUEDAMOS
-mod2=glm(hijos~ms01_0101a+
-          ms02_0238+area+
-          cono_algmet+actuni_m+ms08_0809, 
-        data=bd, family=binomial(link = "logit"))
-
-summary(mod2)
-#AIC=93.95 
-
-
-#Matriz de confusión modelo 1
-predicciones1 = ifelse(test = mod1$fitted.values > 0.5, yes = "Si", no = "No")
-observados1 = factor(mod1$model$hijos, levels = c(TRUE, FALSE), labels = c("Si", "No"))
+##Matriz de confusión modelo m4
+predicciones1 = ifelse(test = m4$fitted.values > 0.5, yes = "Si", no = "No")
+observados1 = factor(m4$model$hijos, levels = c(TRUE, FALSE), labels = c("Si", "No"))
 matriz1 = table(predicciones1,observados1, dnn = c("predicciones", "observaciones"))
 matriz1 <- rbind(matriz1[2, ], matriz1[1, ])
 rownames(matriz1)<-c("Si","No")
-matriz1
 confusionMatrix(matriz1)
+#Hay un accuracy de 88.59%
 
-#Matriz de confusión modelo 2
-predicciones2 = ifelse(test = mod2$fitted.values > 0.5, yes = "Si", no = "No")
-observados2 = factor(mod2$model$hijos, levels = c(TRUE, FALSE), labels = c("Si", "No"))
-matriz2 = table(predicciones,observados, dnn = c("predicciones", "observaciones"))
+
+
+### Mosaico de la tabla de contingencia - modelo m4
+mosaic(matriz1,shade = T,colorize = T,
+       gp = gpar(fill = matrix(c("#93B0AC", "#EFD1D4", "#EFD1D4", "#93B0AC"), 2, 2)),
+       labeling_args = list(set_varnames = c(A = "Predicciones", B = "Observaciones")),
+       ylab = "Predicciones",xlab = "Observaciones")
+
+
+#analisis de la colinealidad con el factor VIF
+vif(m4)
+#se observa que no existe colinealidad relevante
+
+
+#6. Modelo logit para la alta fecundidad
+#Transformación variable dependiente (dicotómica en base a ms02_0208)
+#TRUE=Si tiene cuatro o más hijos
+#FALSE=Si tiene menos de cuatro hijos
+
+bd <- bd %>% mutate(a_hijos=(ms02_0208>=4))
+bd$a_hijos
+
+#modelo inicial
+m6=glm(a_hijos~qriqueza+ms08_0809+niv_ed+aestudio+
+         ms02_0276+cono_algmet+actmaconcep_cme_m+pertenece+
+         idioma_orig+departamento+region+area+ms01_0101a+actuni_m, 
+       data=bd, family=binomial(link = "logit"))
+summary(m6)
+
+#modelo con el método backward
+m7<-step(m6,direction = "backward")
+summary(m7)
+#AIC=6959.7
+
+
+#modelo con variables más significativas
+m8=glm(a_hijos~qriqueza+ms08_0809+niv_ed+aestudio+
+         actmaconcep_cme_m+area+ms01_0101a+actuni_m, 
+       data=bd, family=binomial(link = "logit"))
+summary(m8)
+
+
+#Matriz de confusión modelo m7
+predicciones2 = ifelse(test = m7$fitted.values > 0.5, yes = "Si", no = "No")
+observados2 = factor(m7$model$a_hijos, levels = c(TRUE, FALSE), labels = c("Si", "No"))
+matriz2 = table(predicciones2,observados2, dnn = c("predicciones", "observaciones"))
 matriz2 <- rbind(matriz2[2, ], matriz2[1, ])
 rownames(matriz2)<-c("Si","No")
 matriz2
 confusionMatrix(matriz2)
+#Hay un accuracy de 85.04%
 
 
-### Mosaico de la tabla de contingencia - modelo logit
-
-#mod 1
-mosaic(matriz1, shade = T, colorize = T, gp = gpar(fill = matrix(c("green3", "red2", "red2", "green3"), 2, 2)))
-#mod 2
-mosaic(matriz2, shade = T, colorize = T, gp = gpar(fill = matrix(c("green3", "red2", "red2", "green3"), 2, 2)))
-
+### Mosaico de la tabla de contingencia - modelo m7
+mosaic(matriz2,shade = T,colorize = T,
+       gp = gpar(fill = matrix(c("#93B0AC", "#EFD1D4", "#EFD1D4", "#93B0AC"), 2, 2)),
+       labeling_args = list(set_varnames = c(A = "Predicciones", B = "Observaciones")),
+       ylab = "Predicciones",xlab = "Observaciones")
 
 #analisis de la colinealidad con el factor VIF
-vif(mod1)
-vif(mod2)
+vif(m7)
+#se observa que no existe colinealidad relevante
 
-## Evaluacion del modelos--> Diferencia de residuos
+
+
+#8. Evaluacion del modelos -> modelo logit y modelo logit (alta fecundidad)
 # En R, un objeto glm almacena la "deviance" del modelo, así como la "deviance"
 # del modelo nulo. 
-dif_residuos <- mod1$null.deviance - mod1$deviance
-dif_residuos2 <- mod2$null.deviance - mod2$deviance
+
+#usando m4
+dif_residuos <- m4$null.deviance - m4$deviance
+
+#usando m7
+dif_residuos2 <- m7$null.deviance - m7$deviance
 
 # Grados libertad
-df <- mod1$df.null - mod1$df.residual
-df2 <- mod2$df.null - mod2$df.residual
+df <- m4$df.null - m4$df.residual  #m4
+df2 <- m7$df.null - m7$df.residual #m7
 
-# p-value
+# p-value m4
 p_value <- pchisq(q = dif_residuos,df = df, lower.tail = FALSE)
 p_value
 paste("Diferencia de residuos:", round(dif_residuos, 4))
 
+#p-value m7
+p_value <- pchisq(q = dif_residuos2,df = df2, lower.tail = FALSE)
+p_value
+paste("Diferencia de residuos:", round(dif_residuos2, 4))
 
 #pseudo R2
-1- (mod1$deviance/mod1$null.deviance) #80.73
-1- (mod2$deviance/mod2$null.deviance) #80.33
-
-
-#6. Modelo logit para la alta fecundidad
-
-
+1- (m4$deviance/m4$null.deviance) #47.35
+1- (m7$deviance/m7$null.deviance) #32.19
