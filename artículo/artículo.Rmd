@@ -1,16 +1,13 @@
 ---
 title: Análisis de los determinantes en la fecundidad de las mujeres en Bolivia
-runninghead: Uthor \emph{et al}.
 author:
-- name: Valentina Valdez Vega*
+- name: Valentina Valdez Vega
   num: "1"
 address:
 - num: 1
   org: Estudiante de la carrera de "Economía e Inteligencia de Negocios", Universidad Católica Boliviana "San Pablo"
-corrauth: "Corresponding author name, This is sample corresponding address."
-email: correspondingauthor@protonmail.com
 abstract: "hola"
-keywords: Fecundidad, Bolivia, Regresión Logit, Regresión de Poisson;
+keywords: Fecundidad, Bolivia, Regresión Logit, Regresión Poisson;
 classoption:
   - Royal
   - times
@@ -23,20 +20,49 @@ output:
 
 # Introducción
 
+Según los resultados de la última Encuesta de Demografía y Salud (EDSA 2023), realizada por el Instituto Nacional de Estadística (INE), se observó una disminución en la tasa de fecundidad en Bolivia. La tasa de fecundidad en 2023 llegó a 2,1 en comparación a la tasa de 2,9 que se obtuvo en la pasada encuesta EDSA de 2016. Esta caída en la fecundidad no es una sorpresa para países dentro de la región latinoamericana y puede ser relacionada con cambios culturales, nuevas expectativas de vida por parte de la población joven y la creciente inserción al mercado laboral de la población femenina. Por otra parte, se ha visto una fuerte asociación respecto a elevados niveles de pobreza, especialmente en hogares monoparentales o rurales (UNPD, 2015), y  lo que se entiende como una alta fecundidad[^a]. 
+
+[^a]: Según la definición por el UNPD (2015), se define alta fecundidad como haber tenido cuatro o más hijos nacidos vivos.
+
+La Encuesta de Demografía y Salud (EDSA) constituye una fuente de información relevante al momento de obtener indicadores de salud y demografía a nivel nacional, que posteriormente ayudarán el diseño de políticas públicas implementadas en el país boliviano. La EDSA ofrece información importante para analizar la fecundidad en Bolivia, ya que permite vincular los patrones reproductivos con variables sociodemográficas, culturales y de salud, además de gozar de una cobertura a nivel nacional. De esta forma, esta encuesta actúa como fuente de información esencial para la construcción de modelos predictivos que identifican los factores más significativos asociados a la fecundidad de mujeres adultas en edad fértil [^b]  (INE & UNFPA, 2023).
+
+[^b]: Según la definición de la EDSA (2023) considera una mujer adulta en edad fértil a aquellas mujeres entre 20 y 49 años.
+
+En este sentido, resulta necesario analizar los factores determinantes en la fecundidad de las mujeres en Bolivia, para así poder entender de mejor forma por qué existe una tendencia a la baja respecto a la tasa de fecundidad y el número de hijos por mujer. Para tal efecto, es posible utilizar modelos estadísticos de regresión tales como la regresión logística y la regresión Poisson. Por un lado, la regresión logística permite estimar la probabilidad de ocurrencia de una variable binaria a partir de variables independientes, lo cual resulta clave para identificar factores de fecundidad. Por otro lado, la regresión Poisson permite examinar cómo varía la fecundidad en cuanto al número de hijos según características individuales como la edad, nivel educativo, actividad económica o pertenencia étnica (Schultz, 2006).
 
 
 # Objetivos
 
 ## Objetivo General
-
+Analizar los factores determinantes en la fecundidad de las mujeres adultas y el número de hijos nacidos vivos por mujer adulta en edad fértil en Bolivia, a través de modelos de regresión logit y Poisson.
 
 
 ## Objetivos Específicos
+-	Desarrollar el modelo de regresión logístico para explicar los determinantes de la fecundidad en las mujeres adultas en Bolivia a partir de los datos obtenidos en la encuesta EDSA 2023.
+
+-	Desarrollar el modelo de regresión logístico para explicar los determinantes de la alta fecundidad en las mujeres adultas en Bolivia a partir de los datos obtenidos en la encuesta EDSA 2023.
+
+-	Desarrollar el modelo de regresión de Poisson para modelar el número total de hijos nacidos vivos de las mujeres adultas en edad fértil a partir de los datos obtenidos en la encuesta EDSA 2023. 
+
+-	Evaluar el efecto de los determinantes socioeconómicos y demográficos tales como el nivel de pobreza, educación y lugar de residencia en la fecundidad de las mujeres adultas y el número de hijos nacidos vivos de las mujeres en edad fértil en Bolivia, basado en el enfoque de Schultz (Schultz, 2006).
+
+-	Emplear pruebas de bondad de ajuste convencionales, como ser la devianza y el criterio de información de Akaike (AIC), para la evaluación de los modelos desarrollados en la presente investigación.
 
 
 
 
 # Motivación
+
+La fecundidad constituye uno de los indicadores demográficos más relevantes dentro de la dinámica de un país, ya que influye de forma directa en el crecimiento de una población, la estructura por edades y, como consecuencia, permite diseñar políticas sociales y económicas como sean requeridas. Como menciona Schultz (2006), el estudio de la fecundidad no solo se reserva a una decisión propia de una familia o persona, si no que tiene fuertes implicaciones económicas y sociales dentro de una sociedad. A partir de esto, se refuerza la influencia de la fecundidad como un factor esencial del desarrollo de un país y la importancia de comprender los factores que determinan la fecundidad dentro de una economía, para poder entender su comportamiento.
+
+En Bolivia, tomando en cuenta los resultados presentados en la Encuesta de Demografía y Salud, se ha observado que persisten diferencias geográficas, étnicas y socioeconómicas que inciden en los patrones de fecundidad de las mujeres. Como se observa en la figura 1 y se mencionó en la sección 1, los resultados posteriores a la recolección de información para la EDSA (en sus dos versiones 2016 y 2023) muestran una tendencia a la baja en lo que compete a la tasa global de fecundidad[^c]  a nivel Bolivia. En ambos casos, se observa una disminución de 3,5 a 2,9 para el año 2016, y una reducción a 2,1 para el año 2023. Sin embargo, comparando con otros países de América Latina, se observa que desde el 2008 la tasa global de fecundidad boliviana se mantiene mayor respecto a países como Ecuador, Brasil y Chile. Aunque, como región, en todos los países se observa una tendencia decreciente. Esta reducción en la tasa global de fecundidad conduce a una población con una proporción menor de jóvenes, lo cual genera desafíos para la fuerza laboral, la sostenibilidad de los sistemas sociales y afecta directamente el crecimiento poblacional.
+
+[^c]: La tasa global de fecundidad se entiende como el número promedio de hijos que tendrá una mujer a lo largo de su vida fértil, comprendida entre los 15 a 49 años.
+
+```{r fig1, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics("imagenes/1.png")
+```
+
 
 # Marco Teórico/ Revisión de literatura
 
